@@ -3,7 +3,7 @@ import fs from "fs";
 
 const fileStorageEngine = multer.diskStorage({
   destination: (req, file, cb) => {
-    const path = `./uploads/adverseEvent/${req.body.adverseEventId}`;
+    const path = `./uploads/${req.body.adverseEventId}`;
     fs.mkdirSync(path, { recursive: true });
     cb(null, path);
   },
