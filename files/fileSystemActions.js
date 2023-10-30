@@ -32,3 +32,5 @@ const deleteAllFilesInDir = async (dirPath) => {
     console.log("An error occurred: " + error);
   }
 };
+
+export { deleteDirectory, deleteFile, deleteAllFilesInDir };
