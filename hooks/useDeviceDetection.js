@@ -60,4 +60,26 @@ const useIsMobile = () => {
   return { isMobile };
 };
 
-export { useDeviceDetection, useIsMobile };
+/**
+ * This hook detects whether the currently used device is
+ * a mobile device using a fixed pixel width.
+ *
+ * @returns boolean - currenct device is a mobile device
+ */
+const useCheckMobileScreen = () => {
+  const [width, setWidth] = useState(window.innerWidth);
+  const handleWindowSizeChange = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
+
+  return width <= 768;
+};
+
+export { useDeviceDetection, useIsMobile, useCheckMobileScreen };
