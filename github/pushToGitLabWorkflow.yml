@@ -6,7 +6,7 @@ on:
   push:
     branches: [main]
 
-# Than this Workflow gets executed every time a new commit is pushed to the repository
+# Than this Workflow gets executed every time a new commit is pushed to the repository or merges a pull request
 # on: [push]
 
 jobs:
