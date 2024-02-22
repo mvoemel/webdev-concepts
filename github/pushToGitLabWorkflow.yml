@@ -1,0 +1,26 @@
+# GitHub Actions Workflow to push to GitLab using an ACCESS_TOKEN
+
+name: PushGitlab
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Push To Gitlab
+        env:
+          token: ${{ secrets.GITLAB_ACCESS_TOKEN }}
+        run: |
+          echo Starting to push repo to gitlab
+          git config user.name "USERNAME"
+          git config user.email "44814054+USERNAME@users.noreply.github.com"
+          git remote set-url origin "https://oauth2:${token}@gitlab.com/USERNAMEGITLAB/jskara-web.git"
+          git push origin main
